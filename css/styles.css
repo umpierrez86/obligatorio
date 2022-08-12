@@ -188,3 +188,29 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#imgLogin{
+  width: 300px;
+}
+
+#cuerpo{
+  align-items: center;
+  text-align: center;
+}
+
+.bajar{
+  margin-top: 20px;
+}
+
+#ingreso{
+  margin-top: 30px;
+}
+
+#prod{
+  text-align: center;
+  margin-top: 20px;
+}
+
+#autos{
+  color: rgb(145, 142, 142);
+}
