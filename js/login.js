@@ -1,9 +1,10 @@
 function login(){
-    let usuario = document.getElementById('name').value;
-    let contrasena = document.getElementById('contra').value;
+    let usuario = {};
+    usuario.correo = document.getElementById('email').value;
+    usuario.contrasena = document.getElementById('contra').value;
     
-    if(usuario != "" && contrasena != ""){
-        sessionStorage.setItem('user',usuario);
+    if(usuario.correo != "" && usuario.contrasena != ""){
+        sessionStorage.setItem('user',JSON.stringify(usuario));
         location.href = "index.html";
     }else{
         alert("Usuario y clave son requeridos")

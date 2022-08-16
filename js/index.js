@@ -12,4 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
+    let usuario = JSON.parse(sessionStorage.getItem('user'));
+    if(usuario == null){
+        alert('Debe hacer login para ingresar');
+        location.href = "login.html";
+    }
+
 });
