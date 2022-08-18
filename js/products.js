@@ -2,7 +2,7 @@
 
 let prodArray = [];
 
-function mostrarAutos(array){
+function mostrarListas(array){
     let contenido = "";
 
     for(let i = 0; i < array.products.length; i++){
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     getJSONData(direccion).then(function(resultObj){
         if(resultObj.status === "ok"){
             prodArray = resultObj.data;
-            mostrarAutos(prodArray);
+            mostrarListas(prodArray);
         }
     });
 });
