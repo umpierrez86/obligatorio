@@ -16,7 +16,7 @@ function mostrarListas(array){
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1">
-                        <h4>` + productos.name +  " - " + + productos.currency +  " "  + productos.cost + `</h4> 
+                        <h4>` + productos.name +  " - " + productos.currency +  " "  + productos.cost + `</h4> 
                         <p> ` + productos.description +`</p> 
                         </div>
                         <small class="text-muted">` + productos.soldCount + ` artículos</small>
