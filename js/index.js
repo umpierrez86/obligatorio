@@ -18,4 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
         location.href = "login.html";
     }
 
+    document.getElementById("correo").innerHTML = usuario.correo
+
 });
