@@ -5,6 +5,7 @@ const descendente = "DESC";
 const relevancia = "REL";
 let min = undefined;
 let max = undefined;
+let busqueda = undefined;
 
 let prodArray = [];
 
@@ -51,7 +52,6 @@ function ordenar(ordenamiento,array){
 function filtrar(){
     min = parseInt(document.getElementById('minimo').value);
     max = parseInt(document.getElementById('maximo').value);
-    console.log(min);
     if((!(Number.isNaN(min))) && (!(Number.isNaN(max)))){
         let array = prodArray
         let filtrado = array.filter(array => array.cost >= min && array.cost <= max);
@@ -68,24 +68,26 @@ function mostrarListas(array){
 
     for(let i = 0; i < array.length; i++){
         let productos = array[i];
-        contenido += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="`  + productos.image + `" alt="product image" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                        <h4>` + productos.name +  " - " + productos.currency +  " "  + productos.cost + `</h4> 
-                        <p> ` + productos.description +`</p> 
-                        </div>
-                        <small class="text-muted">` + productos.soldCount + ` artículos</small>
-                    </div> 
+        if(productos.name.toLowerCase().includes(busqueda) || productos.description.toLowerCase().includes(busqueda) || busqueda == undefined){
+            contenido += `
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="`  + productos.image + `" alt="product image" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="mb-1">
+                            <h4>` + productos.name +  " - " + productos.currency +  " "  + productos.cost + `</h4> 
+                            <p> ` + productos.description +`</p> 
+                            </div>
+                            <small class="text-muted">` + productos.soldCount + ` artículos</small>
+                        </div> 
+                    </div>
                 </div>
             </div>
-        </div>
-        `   
+            `   
+        }
     }
     
     document.getElementById("listas").innerHTML = contenido; 
@@ -129,7 +131,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
             productordenados(relevancia);
         });
 
-        document.getElementById('clearRangeFilter').addEventListener('click',()=>{
+        document.getElementById('Borro').addEventListener('click',()=>{
             limpiar();
+        })
+
+        document.getElementById('search').addEventListener('input',()=>{
+            busqueda = document.getElementById('search').value.toLowerCase();
+            mostrarListas(prodArray);
         })
 });
