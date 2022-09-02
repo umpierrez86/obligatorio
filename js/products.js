@@ -1,19 +1,20 @@
 let id = localStorage.getItem("catID");
 const direccion = PRODUCTS_URL+id+EXT_TYPE;
-//localStorage.setItem('hola',direccion);
 const ascendente = "ASC";
 const descendente = "DESC";
 const relevancia = "REL";
+let min = undefined;
+let max = undefined;
 
 let prodArray = [];
 
 function ordenar(ordenamiento,array){
     if(ordenamiento == "ASC"){
         array.sort(function(a,b){
-            if(a.cost > b.cost){
-                return 1
-            }else if(a.cost < b.cost){
-                return -1;
+            if(parseInt(a.cost) > parseInt(b.cost)){
+                return -1
+            }else if(parseInt(a.cost) < parseInt(b.cost)){
+                return 1;
             }else{
                 return 0;
             }
@@ -22,10 +23,10 @@ function ordenar(ordenamiento,array){
 
     if(ordenamiento == "DESC"){
         array.sort(function(a,b){
-            if(a.cost < b.cost){
-                return 1
-            }else if(a.cost > b.cost){
-                return -1;
+            if(parseInt(a.cost) < parseInt(b.cost)){
+                return -1
+            }else if(parseInt(a.cost) > parseInt(b.cost)){
+                return 1;
             }else{
                 return 0;
             }
@@ -34,9 +35,9 @@ function ordenar(ordenamiento,array){
 
     if(ordenamiento == "REL"){
         array.sort(function(a,b){
-            if(a.soldCount < b.soldCount){
+            if(parseInt(a.soldCount) < parseInt(b.soldCount)){
                 return 1
-            }else if(a.soldCount > b.soldCount){
+            }else if(parseInt(a.soldCount) > parseInt(b.soldCount)){
                 return -1;
             }else{
                 return 0;
@@ -47,6 +48,16 @@ function ordenar(ordenamiento,array){
     return array;
 }
 
+function filtrar(){
+    min = parseInt(document.getElementById('minimo').value);
+    max = parseInt(document.getElementById('maximo').value);
+    console.log(min);
+    if((!(Number.isNaN(min))) && (!(Number.isNaN(max)))){
+        let array = prodArray
+        let filtrado = array.filter(array => array.cost >= min && array.cost <= max);
+        mostrarListas(filtrado);
+    }
+}
 
 function limpiar(){
     mostrarListas(prodArray);
@@ -82,7 +93,6 @@ function mostrarListas(array){
 }       
 
 function productordenados(criterio){
-    /*let auxlistaProductos = prodArray;*/
     let auxCriterio;
 
     if(criterio != undefined){
@@ -103,20 +113,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
       });
     
-        document.getElementById('rangeFilterCount').addEventListener('click', ()=>{
-            let min = document.getElementById('rangeFilterCountMin').value;
-            let max = document.getElementById('rangeFilterCountMax').value;
-            let array = prodArray
-            let filtrado = array.filter(array => array.cost >= min && array.cost <= max);
-            mostrarListas(filtrado);
+        document.getElementById('filtrado').addEventListener('click', ()=>{
+            filtrar();
         });
     
-        document.getElementById('Asc').addEventListener('click', ()=>{
-            productordenados(ascendente);
-        });
-        
         document.getElementById('Desc').addEventListener('click', ()=>{
             productordenados(descendente);
+        });
+        
+        document.getElementById('Asc').addEventListener('click', ()=>{
+            productordenados(ascendente);
         });
         
         document.getElementById('Rel').addEventListener('click', ()=>{
