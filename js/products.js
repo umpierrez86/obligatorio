@@ -9,6 +9,11 @@ let busqueda = undefined;
 
 let prodArray = [];
 
+function cambiarPag(id){
+    localStorage.setItem('prodId',id);
+    location.href = "product-info.html";
+}
+
 function ordenar(ordenamiento,array){
     if(ordenamiento == "ASC"){
         array.sort(function(a,b){
@@ -70,7 +75,7 @@ function mostrarListas(array){
         let productos = array[i];
         if(productos.name.toLowerCase().includes(busqueda) || productos.description.toLowerCase().includes(busqueda) || busqueda == undefined){
             contenido += `
-            <div class="list-group-item list-group-item-action">
+            <div onclick="cambiarPag(${productos.id})" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="`  + productos.image + `" alt="product image" class="img-thumbnail">
@@ -139,4 +144,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             busqueda = document.getElementById('search').value.toLowerCase();
             mostrarListas(prodArray);
         })
+
+    
 });
