@@ -3,6 +3,32 @@ let direccion = PRODUCT_INFO_URL+id+EXT_TYPE;
 let comentarios = PRODUCT_INFO_COMMENTS_URL+id+EXT_TYPE;
 let c = [];
 
+function cambiarPag(id){
+    localStorage.removeItem('prodId');
+    localStorage.setItem('prodId',id);
+    location.reload();
+}
+
+function mostrarRel(pro){
+    let relacion = "";
+    for(rel of pro){
+        relacion += `
+            <div class="col-md-4" onclick="cambiarPag(${rel.id})">
+            <div class="card mt-3" class="card mb-4 shadow-sm custom-card cursor-active">
+                <div class="card-img-top">
+                    <img class="card-img" src="`  + rel.image + `" alt="related image">
+                </div>
+                <div class="body">
+                    <h4 class="card-title">${rel.name}</h4>
+                </div>
+            </div>
+            </div>
+            `   
+    }
+
+    document.getElementById('relacion').innerHTML = relacion
+}
+
 function estrellas(puntos){
     let estre = "";
     for(let i = 0; i < 5; i++){
@@ -16,18 +42,10 @@ function estrellas(puntos){
 }
 
 function mostrarCom(com){
-    console.log(com);
+    //console.log(com);
     let comentarios = "";
     for(let i = 0; i < com.length; i++ ){
         comment = com[i];
-        /*let estre = "";
-        for(let i = 0; i < 5; i++){
-            if(i<=parseInt(comment.score)-1){
-                estre += `<span class="fa fa-star checked" ></span>`;
-            }else{
-                estre += `<span class="fa fa-star"></span>`
-            }
-        }*/
         comentarios += 
         `<div> 
             <div class="list-group-item list-group-item-action cursor-active">
@@ -40,6 +58,26 @@ function mostrarCom(com){
         </div>`
     };
     document.getElementById('comentarios').innerHTML = comentarios;
+}
+
+function mostrarImg(prod){
+    let imagenes = "";
+    for(let i = 0; i < prod.images.length; i++){
+        if(i==0){
+            imagenes += `
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="${prod.images[i]}">
+            </div>
+            `
+        }else{
+            imagenes += `
+            <div class="carousel-item">
+                <img class="d-block w-100" src="${prod.images[i]}">
+            </div>
+            `
+        }
+    }
+    document.getElementById('slides').innerHTML = imagenes;
 }
 
 function mostrarProd(prod){
@@ -59,30 +97,31 @@ function mostrarProd(prod){
         <hr>
         <div>
             <div>
-                <h6>Precio</h6>
+                <h5 id="hola">Precio</h5>
                 <p class="text-muted">${prod.currency} ${prod.cost}</p>
             </div>
             <div>
-                <h6>Descripcion</h6>
+                <h5>Descripcion</h5>
                 <p class="text-muted">${prod.description}</p>
             </div>
             <div>
-                <h6>Categoria</h6>
+                <h5>Categoria</h5>
                 <p class="text-muted">${prod.category}</p>
             </div>
             <div>
-                <h6>Cantidad de vendidos</h6>
+                <h5>Cantidad de vendidos</h5>
                 <p class="text-muted">${prod.soldCount}</p>
             </div>
             <div calss="container">
-                <h6>Imagenes ilustrativas</h6>
-                ${imagenes}
+                <h5>Imagenes ilustrativas</h5>
+                
             </div>
         </div>
         
     </div>
     `;
-    document.getElementById('cat-list-container').innerHTML = contenido; 
+    document.getElementById('cat-list-container').innerHTML = contenido;
+    mostrarImg(prod) 
 }
 
 function agregar(){
@@ -112,13 +151,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(resultObj.status === "ok"){
             prod = resultObj.data;
             mostrarProd(prod);
+            mostrarRel(prod.relatedProducts);
         }
       });
-
-      /*document.getElementById('enviar').addEventListener('click',()=>{
-        let borrar = document.getElementById('descript');
-        borrar.value = "";
-      })*/
 
       document.getElementById('enviar').addEventListener('click',()=>{
         agregar();

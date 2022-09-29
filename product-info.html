@@ -11,6 +11,11 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -43,6 +48,29 @@
         <div class="list-group" id="cat-list-container">
         </div>
       </div>
+      
+        <div id="myCarousel" class="carousel slide" data-bs-interval="false">
+         
+          <div class="carousel-indicators">
+            <ol>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </ol>
+            </div>
+          <div class="carousel-inner"  id="slides"></div>
+           
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      
       <h4>Comentarios</h4>
       <div id="comentarios"></div>
       <div style="padding-top :10px;">
@@ -59,6 +87,9 @@
         </select><br>
         <button type="button" class="btn btn-primary my-3" id="enviar">Enviar</button>
       </div>
+      <hr>
+      <h4>Productos relacionados</h4>
+      <div id="relacion"></div>
     </div>
   </main>
   <footer class="text-muted">
