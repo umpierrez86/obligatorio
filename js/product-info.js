@@ -112,10 +112,6 @@ function mostrarProd(prod){
                 <h5>Cantidad de vendidos</h5>
                 <p class="text-muted">${prod.soldCount}</p>
             </div>
-            <div calss="container">
-                <h5>Imagenes ilustrativas</h5>
-                
-            </div>
         </div>
         
     </div>

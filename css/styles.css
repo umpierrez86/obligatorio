@@ -252,7 +252,10 @@ a.custom-card:hover {
   object-fit: cover;
 }
 
-.carousel, .carousel-inner > .item > img {
-  height: 500px;
-  width: 500px;
+.carousel, .carousel-inner > .item > img, #myCarousel {
+  height: 300px;
+  width: 450px;
+  position: absolute;
+  left: 600px;
+  bottom: 172px;
 }
