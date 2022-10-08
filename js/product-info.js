@@ -2,6 +2,7 @@ let id = localStorage.getItem('prodId');
 let direccion = PRODUCT_INFO_URL+id+EXT_TYPE;
 let comentarios = PRODUCT_INFO_COMMENTS_URL+id+EXT_TYPE;
 let c = [];
+let prod = [];
 
 function dropdown(usuario){
     let contenido = "";
@@ -30,7 +31,7 @@ function mostrarRel(pro){
     let relacion = "";
     for(rel of pro){
         relacion += `
-            <div class="col-md-4" onclick="cambiarPag(${rel.id})">
+            <div class="col-md-4" onclick="cambiarPag(${rel.id})" type="button">
             <div class="card mt-3" class="card mb-4 shadow-sm custom-card cursor-active">
                 <div class="card-img-top">
                     <img class="card-img" src="`  + rel.image + `" alt="related image">
@@ -151,6 +152,25 @@ function agregar(){
 
 }
 
+function alCarrito(){
+    detalles = {
+        id: prod.id,
+        name: prod.name,
+        count: 1,
+        unitCost: prod.cost,
+        currency: prod.currency,
+        image: prod.images[0]
+    };
+    if(localStorage.getItem('carrito') != null){
+        compras = JSON.parse(localStorage.getItem('carrito'));
+        localStorage.removeItem('carrito');
+    }else{
+        compras = [];
+    }
+    compras.push(detalles);
+    localStorage.setItem('carrito',JSON.stringify(compras));
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
     getJSONData(comentarios).then(function(resultObj){
         if(resultObj.status === "ok"){
@@ -179,5 +199,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       }
 
       dropdown(usuario.correo);
-
+    
+      document.getElementById('compra').addEventListener('click',()=>{
+        alCarrito();
+      })
 })

@@ -259,3 +259,14 @@ a.custom-card:hover {
   left: 650px;
   bottom: 155px;
 }
+
+.inp{
+  width: 50px;
+  height: 30px;
+}
+
+#compra{
+  position: absolute;
+  left: 1110px;
+  bottom: 480px;
+}

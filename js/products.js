@@ -92,7 +92,7 @@ function mostrarListas(array){
         let productos = array[i];
         if(productos.name.toLowerCase().includes(busqueda) || productos.description.toLowerCase().includes(busqueda) || busqueda == undefined){
             contenido += `
-            <div onclick="cambiarPag(${productos.id})" class="list-group-item list-group-item-action">
+            <div onclick="cambiarPag(${productos.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="`  + productos.image + `" alt="product image" class="img-thumbnail">
