@@ -80,9 +80,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       dropdown(usuario.correo);
       
-    
-    /*document.getElementById('cantidad').addEventListener('change', ()=>{
-        let cuantos = document.getElementById('cantidad').value;
-        document.getElementById('subtotal').innerHTML = cuantos * carrito.articles.unitCost;
-      })*/
 })
