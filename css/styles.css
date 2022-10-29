@@ -270,3 +270,15 @@ a.custom-card:hover {
   left: 1110px;
   bottom: 480px;
 }
+
+.textIzq{
+  position: absolute;
+  text-align: right;
+  bottom: 45px;
+  left: 1010px;
+  font-size: large;
+}
+
+.invalido{
+  color: red;
+}
