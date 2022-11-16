@@ -31,15 +31,17 @@ function mostrarRel(pro){
     let relacion = "";
     for(rel of pro){
         relacion += `
-            <div class="col-md-4" onclick="cambiarPag(${rel.id})" type="button">
-            <div class="card mt-3" class="card mb-4 shadow-sm custom-card cursor-active">
-                <div class="card-img-top">
-                    <img class="card-img" src="`  + rel.image + `" alt="related image">
+            <div class="col-sm-4">
+                <div onclick="cambiarPag(${rel.id})" type="button">
+                <div class="card mt-3" class="card mb-4 shadow-sm custom-card cursor-active">
+                    <div class="card-img-top">
+                        <img class="card-img" src="`  + rel.image + `" alt="related image">
+                    </div>
+                    <div class="body">
+                        <h4 class="card-title">${rel.name}</h4>
+                    </div>
                 </div>
-                <div class="body">
-                    <h4 class="card-title">${rel.name}</h4>
                 </div>
-            </div>
             </div>
             `   
     }

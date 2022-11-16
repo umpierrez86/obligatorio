@@ -23,13 +23,15 @@
       <!--<div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4> -->
       <div class="form-group" id="cuerpo">
-        <img src="img/login.png" class="img-responsive" id="imgLogin"><br>
-        <h3><strong>Inicio de sesión</strong></h3><br>
-        <label for="correo">Email <input type="email" id="email" name="correo" class="form-control" placeholder="email"></label><br>
-        <label for="contraseña" class="bajar">Contraseña <input type="password" id="contra" name="contraseña" class="form-control" placeholder="contraseña"></label><br>
-        <div id="ingreso">
-          <button id="enter" class="btn btn-success">Ingresar</button><br>
-        </div>
+        <form class="needs-validation" action="index.html" method="post">
+          <img src="img/login.png" class="img-responsive" id="imgLogin"><br>
+          <h3><strong>Inicio de sesión</strong></h3><br>
+          <label for="correo">Email <input type="email" id="email" name="correo" class="form-control" placeholder="email" required></label><br>
+          <label for="contraseña" class="bajar">Contraseña <input type="password" id="contra" minlength="6" name="contraseña" class="form-control" placeholder="contraseña" required></label><br>
+          <div id="ingreso">
+            <button id="enter" class="btn btn-success">Ingresar</button><br>
+          </div>
+        </form>
       </div>
     </div>
   </main>

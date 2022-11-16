@@ -253,11 +253,11 @@ a.custom-card:hover {
 }
 
 .carousel, .carousel-inner > .item > img, #myCarousel {
-  height: 300px;
-  width: 450px;
-  position: absolute;
-  left: 650px;
-  bottom: 155px;
+  
+  width: 45%;
+  position: relative;
+  left: 620px;
+  bottom: 180px;
 }
 
 .inp{
@@ -266,9 +266,9 @@ a.custom-card:hover {
 }
 
 #compra{
-  position: absolute;
-  left: 1110px;
-  bottom: 480px;
+  position: relative;
+  right: 2%;
+  bottom: 20%;
 }
 
 .textIzq{
@@ -282,3 +282,4 @@ a.custom-card:hover {
 .invalido{
   color: red;
 }
+
